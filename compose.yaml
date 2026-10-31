@@ -1,0 +1,17 @@
+# docker compose up -d
+services:
+  eyeballs:
+    image: ghcr.io/richunclecody/halloween-eyeballs:latest
+    restart: unless-stopped
+    ports:
+      - "8080:8080"   # http://<this machine>:8080/L  /C  /R  /control
+      - "8443:8443"   # https (self-signed) so browsers allow the screen wake lock
+    environment:
+      SPECIAL_MEAN_SECONDS: 300
+      QUIRK_MEAN_SECONDS: 45
+      # TLS_HOSTS: "192.168.1.50,eyes.local"
+      # CONTROL_TOKEN: "change-me"
+    volumes:
+      - eyeballs-data:/data
+volumes:
+  eyeballs-data:

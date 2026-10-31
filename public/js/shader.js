@@ -350,8 +350,7 @@ vec3 eyeball(vec2 e, float dTop, float dBot, float px) {
   vec2 w = (R.xy - vec2(-0.34, 0.44)) / vec2(0.21, 0.16);
   float win = smoothstep(1.0, 0.7, max(abs(w.x), abs(w.y)));
   win *= 1.0 - 0.75 * clamp(smoothstep(0.07, 0.02, abs(w.x)) + smoothstep(0.07, 0.02, abs(w.y)), 0.0, 1.0);
-  float spec2 = pow(max(dot(nc, normalize(vec3(0.5, -0.2, 1.0) + vec3(0.0, 0.0, 1.0))), 0.0), 400.0) * 0.3 * onC;
-  col += uKeyColor * uKey * (spec + sheen + spec2 + win * 0.32 * onC) * lidSh;
+  col += uKeyColor * uKey * (spec + sheen + win * 0.32 * onC) * lidSh;
   col += vec3(0.05) * pow(1.0 - clamp(nc.z, 0.0, 1.0), 3.0) * uKey;
 
   // --- nictitating membrane (sweeps in from the inner corner)

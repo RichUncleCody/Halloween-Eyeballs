@@ -19,6 +19,8 @@ docker run -d --name eyeballs --restart unless-stopped \
   ghcr.io/richunclecody/halloween-eyeballs:latest
 ```
 
+Or, with Docker Compose, use the included [`compose.yaml`](compose.yaml): `docker compose up -d`.
+
 Then, on the computer(s) driving the monitors:
 
 | Monitor | Open |

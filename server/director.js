@@ -523,7 +523,8 @@ export class Director {
     if (def.noBlink) this.noBlinkUntil = Math.max(this.noBlinkUntil, end);
     this.lastPlayed[id] = now;
     this.recent = [id, ...this.recent.filter((r) => r !== id)].slice(0, 20);
-    const gap = Math.max(90000, this.erlang(this.config.specialMean * 1000) - dur * 1000);
+    const mean = this.config.specialMean * 1000;
+    const gap = Math.max(Math.min(90000, mean * 0.3), this.erlang(mean) - dur * 1000);
     this.nextSpecialAt = end + gap;
     this.log('special', id, { manual, params: p });
     return fx;
