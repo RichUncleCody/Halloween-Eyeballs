@@ -2,6 +2,8 @@
 
 Turn a row of three monitors into three giant, living eyeballs that watch your guests.
 
+![Preview of the three screens and some of the specials](docs/preview.jpg)
+
 - **Each monitor is one eye**: `/L`, `/C`, `/R`. They're realistic WebGL eyeballs with procedural irises, bloodshot veins, wet corneal reflections, and lids that blink, squint and follow the gaze.
 - **They behave as a group**. The server looks at a shared point in the room and every eye converges on it from its own position, each with its own reaction delay. Most of the time they drift slowly around the room. Now and then one darts somewhere fast and the others "notice" a beat later. They take turns glancing at each other, wander off on their own, then snap back into eerie unison.
 - **About every 5 minutes, something special happens.** There are 34 specials: demon eyes, hellfire, a bat swarm that flies across all three screens, a jack-o'-lantern face made of the three monitors, writing on the wall, googly eyes, and more (full list below).
