@@ -1,0 +1,13 @@
+{
+  "name": "halloween-eyeballs",
+  "version": "1.0.0",
+  "description": "Synchronized, server-directed spooky eyeballs for a row of monitors.",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "node --test test/*.test.js"
+  }
+}

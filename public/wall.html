@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Halloween Eyeballs · wall preview</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+  html, body { margin: 0; height: 100%; background: #050505; overflow: hidden; }
+  .wall { display: flex; gap: 1vw; align-items: center; justify-content: center; height: 100%; }
+  iframe { flex: none; width: min(31.6vw, calc(96vh * 16 / 9)); aspect-ratio: 16 / 9; border: 0; background: #000; border-radius: 4px; box-shadow: 0 0 0 4px #161616, 0 10px 40px rgba(0,0,0,0.7); }
+</style>
+</head>
+<body>
+<div class="wall" id="wall"></div>
+<script>
+  // Shows all three eyes side by side, e.g. for testing on one monitor.
+  // Any query parameters are passed on to each eye (try ?fx=bats&offline=1).
+  const qs = new URLSearchParams(location.search);
+  if (!qs.has('full')) qs.set('preview', '1');
+  for (const pos of ['L', 'C', 'R']) {
+    const f = document.createElement('iframe');
+    f.src = `/${pos}?${qs}`;
+    f.title = `${pos} eye`;
+    document.getElementById('wall').appendChild(f);
+  }
+</script>
+</body>
+</html>

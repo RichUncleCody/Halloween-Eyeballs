@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0706">
+<title>🎃 Eyeballs · Control</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/control.css">
+</head>
+<body>
+<header>
+  <h1>👁️ Halloween Eyeballs <small>control</small></h1>
+  <div class="actions">
+    <button data-post="/api/trigger/random" class="hot">🎲 Random special</button>
+    <button data-post="/api/stop">⏹ Stop effect</button>
+    <button data-post="/api/blink">😑 Blink</button>
+    <button id="sleepBtn">😴 Sleep</button>
+    <button data-post="/api/reload" data-confirm="Reload every screen?">🔄 Reload screens</button>
+  </div>
+</header>
+
+<main>
+  <section class="card status">
+    <h2>Status</h2>
+    <div class="screens" id="screens"></div>
+    <dl id="statusList"></dl>
+  </section>
+
+  <section class="card wide">
+    <h2>Specials <small>tap to play · checkbox = in the auto rotation</small></h2>
+    <div class="grid" id="specials"></div>
+  </section>
+
+  <section class="card">
+    <h2>Quirks</h2>
+    <div class="grid small" id="quirks"></div>
+  </section>
+
+  <section class="card">
+    <h2>Writing on the wall</h2>
+    <form id="msgForm" class="row">
+      <input name="L" placeholder="LEFT" maxlength="24">
+      <input name="C" placeholder="CENTRE" maxlength="24">
+      <input name="R" placeholder="RIGHT" maxlength="24">
+      <button class="hot">🩸 Write</button>
+    </form>
+    <p class="hint">One word per screen. Leave all blank for a random spooky phrase.</p>
+  </section>
+
+  <section class="card">
+    <h2>Look at… <small>tap the room (monitors at the top)</small></h2>
+    <div id="pad" class="pad"><div class="monitors"><i>L</i><i>C</i><i>R</i></div><div id="dot" class="dot"></div></div>
+    <div class="row">
+      <label>Height <input id="lookY" type="range" min="-3" max="3" step="0.1" value="-0.5"></label>
+      <label>Hold <input id="lookHold" type="number" min="1" max="120" value="6" style="width:4em"> s</label>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Mood</h2>
+    <div class="grid small" id="moods"></div>
+    <h2>Gaze mode</h2>
+    <div class="grid small" id="modes"></div>
+    <h2>Iris palette</h2>
+    <div class="grid small" id="palettes"></div>
+  </section>
+
+  <section class="card">
+    <h2>Director</h2>
+    <form id="cfgForm" class="cfg">
+      <label><input type="checkbox" name="auto"> Auto-director on (schedules specials &amp; quirks)</label>
+      <label>Average seconds between specials <input type="number" name="specialMean" min="20" max="7200"></label>
+      <label>Average seconds between quirks <input type="number" name="quirkMean" min="5" max="3600"></label>
+      <label>Minutes between palette changes <input type="number" name="chapterMinutes" min="1" max="240"></label>
+      <button>💾 Save</button>
+    </form>
+    <label class="token">Control token <input id="token" type="password" placeholder="only if CONTROL_TOKEN is set"></label>
+  </section>
+
+  <section class="card wide">
+    <h2>Live preview <button id="previewBtn">Show</button></h2>
+    <div id="preview"></div>
+  </section>
+
+  <section class="card wide">
+    <h2>History</h2>
+    <ol id="history" class="history"></ol>
+  </section>
+</main>
+<div id="toast"></div>
+<script type="module" src="/js/control.js"></script>
+</body>
+</html>

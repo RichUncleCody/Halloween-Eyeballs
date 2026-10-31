@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>🎃 Halloween Eyeballs</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+  @font-face { font-family: Creepster; src: url('/fonts/Creepster-Regular.ttf'); }
+  html, body { margin: 0; min-height: 100%; background: radial-gradient(900px 500px at 50% 0%, #2c1209, #070404); color: #f3e6d8; font: 16px/1.5 ui-sans-serif, system-ui, sans-serif; }
+  main { max-width: 900px; margin: 0 auto; padding: 32px 20px 60px; }
+  h1 { font-family: Creepster, Impact, sans-serif; font-weight: 400; font-size: clamp(42px, 8vw, 84px); margin: 0; color: #ff7a18; text-shadow: 0 0 24px rgba(255,80,0,0.5); letter-spacing: 2px; }
+  .eyes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 28px 0; }
+  .eyes a { display: block; text-align: center; text-decoration: none; color: #1a0a02; background: linear-gradient(180deg, #ff9a3a, #d4500a); border-radius: 16px; padding: 26px 10px; font-size: 44px; font-weight: 800; box-shadow: 0 8px 30px rgba(255,90,0,0.25); }
+  .eyes a small { display: block; font-size: 14px; font-weight: 500; }
+  .more { display: flex; gap: 12px; flex-wrap: wrap; }
+  .more a { color: #f3e6d8; border: 1px solid #5a3218; border-radius: 10px; padding: 10px 16px; text-decoration: none; background: #1a100b; }
+  h2 { color: #ff9a3a; font-size: 18px; margin-top: 36px; }
+  code { background: #1f140e; border: 1px solid #3a2316; border-radius: 6px; padding: 1px 6px; font-size: 14px; }
+  li { margin: 6px 0; }
+  .note { color: #b39a86; font-size: 14px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Halloween Eyeballs</h1>
+  <p>Open one link on each monitor, left to right, then click once on each screen to go fullscreen.</p>
+  <div class="eyes">
+    <a href="/L">L<small>left monitor</small></a>
+    <a href="/C">C<small>centre monitor</small></a>
+    <a href="/R">R<small>right monitor</small></a>
+  </div>
+  <div class="more">
+    <a href="/control">🎛️ Control panel</a>
+    <a href="/wall">🖥️🖥️🖥️ Preview all three</a>
+    <a id="https" href="#">🔒 Same thing over https</a>
+  </div>
+
+  <h2>Keeping the screens awake</h2>
+  <ul>
+    <li>The page asks the browser for a <b>screen wake lock</b>. Browsers only allow that on <code>https://</code> pages or on <code>http://localhost</code>.</li>
+    <li>Loading from another machine over plain http? Use the <a id="https2" href="#">https link</a> (the server makes its own certificate: click <i>Advanced → Proceed</i> once per machine). Or turn off display sleep in the OS.</li>
+    <li>Press <code>D</code> on a screen to see whether keep-awake is active.</li>
+  </ul>
+
+  <h2>Kiosk mode (no browser chrome)</h2>
+  <p class="note">Chrome / Edge: <code>chrome --kiosk --autoplay-policy=no-user-gesture-required <span class="origin"></span>/L</code></p>
+  <p class="note">Extras for each screen URL: <code>?size=0.9</code> eye size, <code>?gap=0.05</code> bezel gap between monitors, <code>?q=0.7</code> render quality.</p>
+</main>
+<script>
+  const httpsPort = 8443;
+  const u = `https://${location.hostname}:${httpsPort}/`;
+  for (const id of ['https', 'https2']) document.getElementById(id).href = u;
+  for (const e of document.querySelectorAll('.origin')) e.textContent = location.origin;
+</script>
+</body>
+</html>
